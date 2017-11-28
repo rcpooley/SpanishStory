@@ -1,0 +1,5 @@
+<div *ngIf="rounds">
+    <div *ngFor="let roundID of genKeys(rounds)">
+        <button (click)="setRound(roundID)">{{roundID}}</button>
+    </div>
+</div>

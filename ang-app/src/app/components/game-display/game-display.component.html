@@ -1,0 +1,13 @@
+<div id="main">
+    <div *ngIf="round; else: waiting">
+        <div class="prompt">{{round.prompt}}</div>
+        <div id="options">
+            <div *ngFor="let opt of round.options" class="option">
+                {{opt.text}} - {{opt.votes}}
+            </div>
+        </div>
+    </div>
+    <ng-template #waiting>
+        <div class="prompt">Waiting for game to start...</div>
+    </ng-template>
+</div>

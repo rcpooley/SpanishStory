@@ -1,0 +1,11 @@
+<div *ngIf="isVisible(); else: waiting">
+    <div *ngFor="let opt of round.options"
+         class="choice"
+         [class.selected]="optIndex(opt) == choice"
+         (click)="chooseOpt(opt)">
+        {{opt.text}}
+    </div>
+</div>
+<ng-template #waiting>
+    Waiting...
+</ng-template>

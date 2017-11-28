@@ -1,0 +1,11 @@
+.choice {
+    cursor: pointer;
+}
+
+.choice.selected {
+    background: green;
+}
+
+.choice:not(.selected):hover {
+    background: blue;
+}

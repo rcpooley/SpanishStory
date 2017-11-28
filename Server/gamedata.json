@@ -1,0 +1,49 @@
+{
+  "settings": {
+    "roundtime": 15000
+  },
+  "rounds": {
+    "start": {
+      "prompt": "Welcome to Spanish Story!",
+      "opts": [
+        {
+          "text": "Ir a la biblioteca",
+          "next": "pre-library"
+        },
+        {
+          "text": "Ir a la casa",
+          "next": "pre-house"
+        }
+      ]
+    },
+    "pre-library": {
+      "prompt": "Quieres ir a la biblioteca?",
+      "next": "library",
+      "opts": [
+        "Sí, quiero ir",
+        "Sí, querer ir",
+        "Sí, quieres ir",
+        "Sí, quieren ir"
+      ]
+    },
+    "pre-house": {
+      "prompt": "Queremos ir a la casa?",
+      "next": "house",
+      "opts": [
+        "Sí, queremos ir",
+        "Sí, querer ir",
+        "Sí, quieren ir",
+        "Sí, quiero ir"
+      ]
+    },
+    "library": {
+      "prompt": "You are at the library!"
+    },
+    "house": {
+      "prompt": "You are at the house!"
+    },
+    "error": {
+      "prompt": "An error has occurred"
+    }
+  }
+}
