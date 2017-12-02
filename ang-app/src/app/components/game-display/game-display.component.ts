@@ -15,6 +15,7 @@ interface TextPart {
 export class GameDisplayComponent {
 
     private round: Round;
+    private totalVotes: number;
 
     constructor(private common: CommonService) {
         let gameStore = this.common.getStore('game');
@@ -22,8 +23,21 @@ export class GameDisplayComponent {
         ref.on('update', (newVal: any, path: string) => {
             if (newVal) {
                 this.round = ref.value(true);
+                this.calcVotes();
+            } else {
+                this.totalVotes = 0;
             }
         }, true);
+    }
+
+    private calcVotes(): void {
+        let votes = 0;
+
+        this.round.options.forEach(opt => {
+            votes += opt.votes;
+        });
+
+        this.totalVotes = votes;
     }
 
     getLetter(opt) {

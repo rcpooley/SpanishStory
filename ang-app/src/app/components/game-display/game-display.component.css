@@ -13,6 +13,13 @@
     color: gold;
 }
 
+.totalvotes {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    font-size: 30px;
+}
+
 .mainsub {
     display: flex;
     flex-direction: column;

@@ -25,6 +25,9 @@
                 </div>
             </div>
         </div>
+        <div class="totalvotes">
+            {{totalVotes}} vote{{totalVotes == 1 ? '' : 's'}}
+        </div>
         <div *ngIf="round.closed; else: notclosed"
              class="thebtn"
              (click)="nextRound()">Next Round</div>
