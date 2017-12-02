@@ -39,4 +39,14 @@ export class UserDisplayComponent implements OnInit {
     optIndex(opt) {
         return this.round.options.indexOf(opt);
     }
+
+    parseText(text: string): string {
+        let open = text.indexOf('<<');
+        let close = text.indexOf('>>');
+        if (open >= 0 && close > open) {
+            let inside = text.substring(open + 2, close);
+            return inside;
+        }
+        return text;
+    }
 }

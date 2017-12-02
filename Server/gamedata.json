@@ -2,22 +2,27 @@
   "settings": {
     "roundtime": 15000
   },
+  "strings": {
+    "start-prompt": "Es el quinto día de tu primera semana de trabajo. Estás conduciendo a tu trabajo. No tienes mucho tiempo, pero tienes hambre.",
+    "start-opt-comer": "Es necesario que <<comer>> algo. Vas a parar y comprar donas (doughnuts)",
+    "start-opt-estar": "Es importante que no <<estar>> tarde. No vas a comer."
+  },
   "rounds": {
     "start": {
-      "prompt": "Es el quinto día de tu primera semana de trabajo. Estás conduciendo a tu trabajo. No tienes mucho tiempo, pero tienes hambre.",
+      "prompt": "[start-prompt]",
       "opts": [
         {
-          "text": "Es necesario que (comer) algo. Vas a parar y comprar donas (doughnuts)",
+          "text": "[start-opt-comer]",
           "next": "start-comer"
         },
         {
-          "text": "Es importante que no (estar) tarde. No vas a comer.",
+          "text": "[start-opt-estar]",
           "next": "start-estar"
         }
       ]
     },
     "start-comer": {
-      "prompt": "Es necesario que (comer) algo. Vas a parar y comprar donas (doughnuts)..",
+      "prompt": "[start-opt-comer]",
       "next": "boss-food",
       "opts": [
         "Comas",
@@ -27,7 +32,7 @@
       ]
     },
     "start-estar": {
-      "prompt": "Es importante que no (estar) tarde. No vas a comer.",
+      "prompt": "[start-opt-estar]",
       "next": "boss-ontime",
       "opts": [
         "estés",

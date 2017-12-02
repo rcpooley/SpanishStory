@@ -3,7 +3,7 @@
         class="choice"
         [class.selected]="optIndex(opt) == choice"
         (click)="chooseOpt(opt)">
-        {{opt.text}}
+        {{parseText(opt.text)}}
     </div>
 </div>
 <ng-template #waiting>Waiting...</ng-template>

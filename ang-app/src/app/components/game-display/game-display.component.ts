@@ -2,6 +2,11 @@ import {Component} from '@angular/core';
 import {CommonService} from "../../services/common.service";
 import {Round} from '../../interfaces/interfaces';
 
+interface TextPart {
+    text: string;
+    bold: boolean;
+}
+
 @Component({
     selector: 'game-display',
     templateUrl: 'game-display.component.html',
@@ -23,6 +28,34 @@ export class GameDisplayComponent {
 
     getLetter(opt) {
         return 'ABCDEFG'.charAt(this.optIndex(opt));
+    }
+
+    parseText(text: string): TextPart[] {
+        let open = text.indexOf('<<');
+        let close = text.indexOf('>>');
+        if (open >= 0 && close > open) {
+            let inside = text.substring(open + 2, close);
+            return [
+                {
+                    text: text.substring(0, open),
+                    bold: false
+                },
+                {
+                    text: '(' + inside + ')',
+                    bold: true
+                },
+                {
+                    text: text.substring(close + 2),
+                    bold: false
+                }
+            ];
+        }
+        return [
+            {
+                text: text,
+                bold: false
+            }
+        ];
     }
 
     optIndex(opt) {

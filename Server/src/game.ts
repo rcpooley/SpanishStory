@@ -1,5 +1,13 @@
 const data = require('./../gamedata.json');
 
+function parseText(text: string): string {
+    let strings = data.strings;
+    Object.keys(strings).forEach(str => {
+        text = text.replace(new RegExp(`\\[${str}\\]`, 'g'), strings[str]);
+    });
+    return text;
+}
+
 class Opt {
     text: string;
     nextRound?: string;
@@ -13,6 +21,8 @@ class Opt {
         } else {
             this.text = json;
         }
+
+        this.text = parseText(this.text);
     }
 }
 
@@ -26,7 +36,7 @@ class Round {
 
     constructor(id: string, json: any) {
         this.id = id;
-        this.prompt = json.prompt;
+        this.prompt = parseText(json.prompt);
         this.options = [];
         this.nextRound = json.next;
         this.correctOpt = -1;

@@ -1,6 +1,10 @@
 <div id="main">
     <div *ngIf="round; else: waiting" class="mainsub">
-        <div class="prompt">{{round.prompt}}</div>
+        <div class="prompt">
+            <span *ngFor="let part of parseText(round.prompt)" [class.bolded]="part.bold">
+                {{part.text}}
+            </span>
+        </div>
         <div class="optionswrap">
             <div id="options">
                 <div *ngFor="let opt of round.options"
@@ -10,7 +14,11 @@
                     <table style="width: 100%">
                         <tr>
                             <td width="30px"><div class="letter">{{getLetter(opt)}}</div></td>
-                            <td style="padding: 0 10px;">{{opt.text}}</td>
+                            <td style="padding: 0 10px;">
+                                <span *ngFor="let part of parseText(opt.text)" [class.bolded]="part.bold">
+                                    {{part.text}}
+                                </span>
+                            </td>
                             <td width="30px"><div class="votes" *ngIf="!round.nextRound || round.closed">{{opt.votes}}</div></td>
                         </tr>
                     </table>

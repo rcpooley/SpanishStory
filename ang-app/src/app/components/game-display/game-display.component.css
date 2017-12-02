@@ -8,6 +8,11 @@
     color: white;
 }
 
+.bolded {
+    font-weight: bold;
+    color: gold;
+}
+
 .mainsub {
     display: flex;
     flex-direction: column;
