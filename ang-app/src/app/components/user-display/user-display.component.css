@@ -1,11 +1,15 @@
-.choice {
+.choice:not(.disabled) {
     cursor: pointer;
+}
+
+.choice.disabled {
+    cursor: default;
 }
 
 .choice.selected {
     background: green;
 }
 
-.choice:not(.selected):hover {
+.choice:not(.selected):not(.disabled):hover {
     background: blue;
 }

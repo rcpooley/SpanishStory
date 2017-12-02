@@ -33,6 +33,7 @@ export class UserDisplayComponent implements OnInit {
     }
 
     chooseOpt(opt) {
+        if (this.round.closed) return;
         this.choiceRef.update(this.round.options.indexOf(opt));
     }
 

@@ -1,9 +1,13 @@
-<div *ngIf="round && !round.closed; else: waiting">
+<div *ngIf="round && (!round.closed || round.nextRound); else: waiting">
     <div *ngFor="let opt of round.options"
-        class="choice"
-        [class.selected]="optIndex(opt) == choice"
-        (click)="chooseOpt(opt)">
+         class="choice"
+         [class.selected]="optIndex(opt) == choice"
+         [class.disabled]="round.closed"
+         (click)="chooseOpt(opt)">
         {{parseText(opt.text)}}
+    </div>
+    <div *ngIf="round.closed">
+        {{choice == round.correctOpt ? 'Correct' : 'Incorrect'}}
     </div>
 </div>
 <ng-template #waiting>Waiting...</ng-template>
