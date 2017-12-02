@@ -1,3 +1,30 @@
+.prompt {
+    text-align: center;
+    font-size: 30px;
+}
+
+.iscorrect {
+    text-align: center;
+    font-size: 30px;
+}
+
+.iscorrect.correct {
+    color: green;
+}
+
+.iscorrect:not(.correct) {
+    color: red;
+}
+
+.choice {
+    background: lightgray;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 20px;
+}
+
 .choice:not(.disabled) {
     cursor: pointer;
 }

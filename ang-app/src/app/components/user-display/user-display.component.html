@@ -1,13 +1,23 @@
+<div *ngIf="!round.closed" class="prompt">
+    <span *ngIf="!round.nextRound; else: quest">
+        Choose any option
+    </span>
+    <ng-template #quest>
+        Choose the correct answer
+    </ng-template>
+</div>
 <div *ngIf="round && (!round.closed || round.nextRound); else: waiting">
+    <div *ngIf="round.closed"
+         class="iscorrect"
+         [class.correct]="choice == round.correctOpt">
+        {{choice == round.correctOpt ? 'Correct!' : 'Incorrect :('}}
+    </div>
     <div *ngFor="let opt of round.options"
          class="choice"
          [class.selected]="optIndex(opt) == choice"
          [class.disabled]="round.closed"
          (click)="chooseOpt(opt)">
         {{parseText(opt.text)}}
-    </div>
-    <div *ngIf="round.closed">
-        {{choice == round.correctOpt ? 'Correct' : 'Incorrect'}}
     </div>
 </div>
 <ng-template #waiting>Waiting...</ng-template>
