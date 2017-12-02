@@ -4,43 +4,43 @@
   },
   "rounds": {
     "start": {
-      "prompt": "Welcome to Spanish Story!",
+      "prompt": "Es el quinto día de tu primera semana de trabajo. Estás conduciendo a tu trabajo. No tienes mucho tiempo, pero tienes hambre.",
       "opts": [
         {
-          "text": "Ir a la biblioteca",
-          "next": "pre-library"
+          "text": "Es necesario que (comer) algo. Vas a parar y comprar donas (doughnuts)",
+          "next": "start-comer"
         },
         {
-          "text": "Ir a la casa",
-          "next": "pre-house"
+          "text": "Es importante que no (estar) tarde. No vas a comer.",
+          "next": "start-estar"
         }
       ]
     },
-    "pre-library": {
-      "prompt": "Quieres ir a la biblioteca?",
-      "next": "library",
+    "start-comer": {
+      "prompt": "Es necesario que (comer) algo. Vas a parar y comprar donas (doughnuts)..",
+      "next": "boss-food",
       "opts": [
-        "Sí, quiero ir",
-        "Sí, querer ir",
-        "Sí, quieres ir",
-        "Sí, quieren ir"
+        "Comas",
+        "Comes",
+        "Comiendo",
+        "Comería"
       ]
     },
-    "pre-house": {
-      "prompt": "Queremos ir a la casa?",
-      "next": "house",
+    "start-estar": {
+      "prompt": "Es importante que no (estar) tarde. No vas a comer.",
+      "next": "boss-ontime",
       "opts": [
-        "Sí, queremos ir",
-        "Sí, querer ir",
-        "Sí, quieren ir",
-        "Sí, quiero ir"
+        "estés",
+        "estás",
+        "estar",
+        "estando"
       ]
     },
-    "library": {
-      "prompt": "You are at the library!"
+    "boss-food": {
+      "prompt": "food"
     },
-    "house": {
-      "prompt": "You are at the house!"
+    "boss-ontime": {
+      "prompt": "ontime"
     },
     "error": {
       "prompt": "An error has occurred"

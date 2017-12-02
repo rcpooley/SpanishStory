@@ -39,7 +39,6 @@ class App {
 
     private updateGame() {
         this.gameStore.ref('/round').update(this.game.getRound());
-        this.gameStore.ref('/state').update(this.game.state);
     }
 
     private middleware(): void {
@@ -95,12 +94,24 @@ class App {
         this.adminStore.ref('/rounds').update(this.game.rounds);
 
         this.adminStore.ref('/setround').on('updateValue', (newVal: any) => {
+            let round = this.game.getRound();
+            if (round) {
+                round.closed = false;
+            }
             this.game.curRound = newVal;
-            this.game.startRound();
             this.clearVotes();
         });
 
+        this.adminStore.ref('/closeround').on('updateValue', () => {
+            this.game.getRound().closed = true;
+            this.updateGame();
+        });
+
         this.adminStore.ref('/nextround').on('updateValue', () => {
+            let round = this.game.getRound();
+            if (round) {
+                round.closed = false;
+            }
             this.game.nextRound();
             this.clearVotes();
         });

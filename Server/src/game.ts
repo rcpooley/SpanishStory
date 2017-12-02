@@ -1,4 +1,3 @@
-import {Lib} from "./Lib";
 const data = require('./../gamedata.json');
 
 class Opt {
@@ -22,43 +21,41 @@ class Round {
     prompt: string;
     options: Opt[];
     nextRound?: string;
+    closed: boolean;
+    correctOpt: number;
 
     constructor(id: string, json: any) {
         this.id = id;
         this.prompt = json.prompt;
         this.options = [];
-        if (json.opts) {
-            json.opts.forEach(json => {
-                this.options.push(new Opt(json));
-            });
-        }
         this.nextRound = json.next;
+        this.correctOpt = -1;
+        if (json.opts) {
+            let opts = JSON.parse(JSON.stringify(json.opts)).map(opt => new Opt(opt));
+            if (this.nextRound) {
+                opts[0].correct = true;
+            }
+            while (opts.length > 0) {
+                let opt = opts.splice(Math.floor(Math.random() * opts.length), 1)[0];
+                if (opt.correct) {
+                    this.correctOpt = this.options.length;
+                }
+                this.options.push(opt);
+            }
+        }
+        this.closed = false;
     }
-}
-
-export interface State {
-    open: number;
-    close: number;
 }
 
 export class Game {
     curRound: string;
     rounds: {[id: string]: Round};
-    state: State;
 
     constructor() {
         this.rounds = {};
         Object.keys(data.rounds).forEach(roundId => {
             this.rounds[roundId] = new Round(roundId, data.rounds[roundId]);
         });
-    }
-
-    startRound() {
-        let now = Lib.now();
-        this.state = {
-            open: now,
-            close: now + data.settings.roundtime
-        };
     }
 
     nextRound() {
@@ -80,7 +77,6 @@ export class Game {
         });
 
         this.curRound = nextRound;
-        this.startRound();
     }
 
     getRound(): Round {

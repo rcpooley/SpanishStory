@@ -21,6 +21,18 @@ export class GameDisplayComponent {
         }, true);
     }
 
+    getLetter(opt) {
+        return 'ABCDEFG'.charAt(this.optIndex(opt));
+    }
+
+    optIndex(opt) {
+        return this.round.options.indexOf(opt);
+    }
+
+    closeRound() {
+        this.common.getStore('admin').ref('/closeround').update(1);
+    }
+
     nextRound() {
         this.common.getStore('admin').ref('/nextround').update(1);
     }

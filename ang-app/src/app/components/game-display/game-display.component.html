@@ -1,11 +1,28 @@
 <div id="main">
-    <div *ngIf="round; else: waiting">
+    <div *ngIf="round; else: waiting" class="mainsub">
         <div class="prompt">{{round.prompt}}</div>
-        <div id="options">
-            <div *ngFor="let opt of round.options" class="option">
-                {{opt.text}} - {{opt.votes}}
+        <div class="optionswrap">
+            <div id="options">
+                <div *ngFor="let opt of round.options"
+                     class="option"
+                     [class.correct]="round.closed && optIndex(opt) == round.correctOpt"
+                     [class.incorrect]="round.closed && optIndex(opt) != round.correctOpt && round.correctOpt >= 0">
+                    <table style="width: 100%">
+                        <tr>
+                            <td width="30px"><div class="letter">{{getLetter(opt)}}</div></td>
+                            <td style="padding: 0 10px;">{{opt.text}}</td>
+                            <td width="30px"><div class="votes" *ngIf="!round.nextRound || round.closed">{{opt.votes}}</div></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
+        <div *ngIf="round.closed; else: notclosed"
+             class="thebtn"
+             (click)="nextRound()">Next Round</div>
+        <ng-template #notclosed>
+            <div (click)="closeRound()" class="thebtn">Close Round</div>
+        </ng-template>
     </div>
     <ng-template #waiting>
         <div class="prompt">Waiting for game to start...</div>
