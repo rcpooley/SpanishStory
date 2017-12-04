@@ -3,7 +3,7 @@
     "roundtime": 15000
   },
   "strings": {
-    "prestart-prompt": "Go to http://lol.com",
+    "prestart-prompt": "Abre http://ejemplosactuales.com en su móvil",
     "start-prompt": "Es el quinto día de tu primera semana de trabajo. Estás conduciendo a tu trabajo. No tienes mucho tiempo, pero tienes hambre.",
     "start-opt-comer": "Es necesario que <<comer>> algo. Vas a parar y comprar donas (doughnuts)",
     "start-opt-estar": "Es importante que no <<estar>> tarde. No vas a comer.",
