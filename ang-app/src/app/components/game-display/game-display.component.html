@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="totalvotes">
+        <div class="totalvotes" *ngIf="round.options.length > 0">
             {{totalVotes}} voto{{totalVotes == 1 ? '' : 's'}}
         </div>
         <div *ngIf="round.closed; else: notclosed"

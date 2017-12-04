@@ -5,7 +5,7 @@ import {DataStores, DataStoreServer, DataStore, DataSocket} from 'datasync-js';
 
 @Injectable()
 export class CommonService {
-    private url = 'http://localhost:3000';
+    private url = 'http://ejemplosactuales.com';
     private socket: Socket;
     private stores: DataStores;
     private storeServer: DataStoreServer;

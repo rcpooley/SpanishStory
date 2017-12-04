@@ -4,7 +4,7 @@ import app from './App';
 
 let debug = dbg('SpanishStory');
 
-const port = normalizePort(process.env.PORT || 3000);
+const port = normalizePort(process.env.PORT || 8088);
 app.express.set('port', port);
 
 const server = app.server;
