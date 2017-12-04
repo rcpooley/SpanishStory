@@ -6,7 +6,7 @@ import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as cors from 'cors';
 import * as SocketIO from 'socket.io';
-import * as path from 'path';
+import * as fs from 'fs';
 import {DataStores, DataStoreServer, DataStore, DataSocket} from 'datasync-js';
 import Socket = SocketIO.Socket;
 import {Game} from "./game";
@@ -58,14 +58,21 @@ class App {
     }
 
     private routes(): void {
-        var sendIndex = (req, res) => {
-            res.sendFile(path.resolve(__dirname + '/../public/index.html'));
-        };
+        this.express.get('*', function (req, res) {
+            var url = req.url.split('?')[0];
+            if (url === '/')url += 'index.html';
 
-        this.express.get('/admin', sendIndex);
-        this.express.get('/display', sendIndex);
+            if (url == '/admin' || url == '/display') url = '/index.html';
 
-        this.express.use(express.static('public'));
+            var path = __dirname + '/public/' + url;
+            try {
+                fs.accessSync(path, fs.constants.F_OK);
+            } catch (e) {
+                path = __dirname + '/public/err404.html';
+            }
+
+            res.sendFile(path);
+        });
     }
 
     private createServer(): void {

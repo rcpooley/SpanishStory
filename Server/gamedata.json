@@ -120,7 +120,7 @@
     },
     "b-pasar": {
       "prompt": "[b-opt-pasar]",
-      "next": "b2-c",
+      "next": "b2-d",
       "opts": [
         "pasen",
         "pasaren",
@@ -130,7 +130,7 @@
     },
     "b-dar": {
       "prompt": "[b-opt-dar]",
-      "next": "b3-c",
+      "next": "b3-e",
       "opts": [
         "dé",
         "di",

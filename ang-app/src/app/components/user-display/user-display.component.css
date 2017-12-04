@@ -38,5 +38,5 @@
 }
 
 .choice:not(.selected):not(.disabled):hover {
-    background: blue;
+    #background: blue;
 }
