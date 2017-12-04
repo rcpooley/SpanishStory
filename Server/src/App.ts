@@ -6,6 +6,7 @@ import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as cors from 'cors';
 import * as SocketIO from 'socket.io';
+import * as path from 'path';
 import {DataStores, DataStoreServer, DataStore, DataSocket} from 'datasync-js';
 import Socket = SocketIO.Socket;
 import {Game} from "./game";
@@ -57,6 +58,13 @@ class App {
     }
 
     private routes(): void {
+        var sendIndex = (req, res) => {
+            res.sendFile(path.resolve(__dirname + '/../public/index.html'));
+        };
+
+        this.express.get('/admin', sendIndex);
+        this.express.get('/display', sendIndex);
+
         this.express.use(express.static('public'));
     }
 

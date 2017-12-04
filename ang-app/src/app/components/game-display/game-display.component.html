@@ -30,9 +30,9 @@
         </div>
         <div *ngIf="round.closed; else: notclosed"
              class="thebtn"
-             (click)="nextRound()">Next Round</div>
+             (click)="nextRound()">Siguiente Ronda</div>
         <ng-template #notclosed>
-            <div (click)="closeRound()" class="thebtn">Close Round</div>
+            <div (click)="closeRound()" class="thebtn">Termina Ronda</div>
         </ng-template>
     </div>
     <ng-template #waiting>

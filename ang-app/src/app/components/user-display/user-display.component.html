@@ -1,16 +1,16 @@
 <div *ngIf="!round.closed" class="prompt">
     <span *ngIf="!round.nextRound; else: quest">
-        Choose any option
+        Escoge lo que quieras
     </span>
     <ng-template #quest>
-        Choose the correct answer
+        Escoge la forma correcta
     </ng-template>
 </div>
 <div *ngIf="round && (!round.closed || round.nextRound); else: waiting">
     <div *ngIf="round.closed"
          class="iscorrect"
          [class.correct]="choice == round.correctOpt">
-        {{choice == round.correctOpt ? 'Correct!' : 'Incorrect :('}}
+        {{choice == round.correctOpt ? 'Correcto!' : 'Incorrecto :('}}
     </div>
     <div *ngFor="let opt of round.options"
          class="choice"
@@ -20,4 +20,4 @@
         {{parseText(opt.text)}}
     </div>
 </div>
-<ng-template #waiting>Waiting...</ng-template>
+<ng-template #waiting></ng-template>
